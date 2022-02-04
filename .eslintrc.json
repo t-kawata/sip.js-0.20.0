@@ -15,7 +15,7 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "no-console": "error",
+    "no-console": "warn",
     // "@typescript-eslint/explicit-member-accessibility": "error",
     "@typescript-eslint/member-ordering": "error",
     "tree-shaking/no-side-effects-in-initialization": 2

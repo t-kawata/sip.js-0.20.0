@@ -395,6 +395,8 @@ export class SessionDescriptionHandler implements SessionDescriptionHandlerDefin
    */
   protected getLocalMediaStream(options?: SessionDescriptionHandlerOptions): Promise<void> {
     this.logger.debug("SessionDescriptionHandler.getLocalMediaStream");
+    console.log("11111111");
+    console.log(this._peerConnection);
     if (this._peerConnection === undefined) {
       return Promise.reject(new Error("Peer connection closed."));
     }
@@ -419,7 +421,8 @@ export class SessionDescriptionHandler implements SessionDescriptionHandlerDefin
         constraints = { audio: true };
       }
     }
-
+    console.log("22222222");
+    console.log(this.mediaStreamFactory);
     this.localMediaStreamConstraints = constraints;
     return this.mediaStreamFactory(constraints, this).then((mediaStream) => this.setLocalMediaStream(mediaStream));
   }
