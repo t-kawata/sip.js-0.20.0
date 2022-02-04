@@ -499,7 +499,7 @@ export class SessionDescriptionHandler implements SessionDescriptionHandlerDefin
             } catch (err) {
               console.log("6666666666666666666666666666666");
               console.error(err);
-              throw err;
+              // throw err;
             }
           })
         );
