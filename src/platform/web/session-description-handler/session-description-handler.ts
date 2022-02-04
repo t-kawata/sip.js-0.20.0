@@ -495,7 +495,7 @@ export class SessionDescriptionHandler implements SessionDescriptionHandlerDefin
               SessionDescriptionHandler.dispatchAddTrackEvent(localStream, newTrack);
             } catch (err) {
               if (err instanceof TypeError) {
-                const error = err as TypeError
+                const error = err;
                 this.logger.error(`SessionDescriptionHandler.setLocalMediaStream - ERROR MESSAGE: ${error.message}`);
               }
             }
@@ -515,8 +515,6 @@ export class SessionDescriptionHandler implements SessionDescriptionHandlerDefin
     if (videoTracks.length) {
       updateTrack(videoTracks[0]);
     }
-    console.log("1111111111111111111111");
-    console.log(trackUpdates);
     return trackUpdates.reduce((p, x) => p.then(() => x), Promise.resolve());
   }
 
