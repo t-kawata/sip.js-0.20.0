@@ -9945,8 +9945,6 @@ class SessionDescriptionHandler {
      */
     getLocalMediaStream(options) {
         this.logger.debug("SessionDescriptionHandler.getLocalMediaStream");
-        console.log("11111111");
-        console.log(this._peerConnection);
         if (this._peerConnection === undefined) {
             return Promise.reject(new Error("Peer connection closed."));
         }
@@ -9968,8 +9966,6 @@ class SessionDescriptionHandler {
                 constraints = { audio: true };
             }
         }
-        console.log("22222222");
-        console.log(this.mediaStreamFactory);
         this.localMediaStreamConstraints = constraints;
         return this.mediaStreamFactory(constraints, this).then((mediaStream) => this.setLocalMediaStream(mediaStream));
     }
@@ -10211,6 +10207,8 @@ class SessionDescriptionHandler {
         // stream is listed as inactive, it MUST be marked as inactive in the
         // answer.
         // https://tools.ietf.org/html/rfc3264#section-6.1
+        console.log("11111111");
+        console.log(this._peerConnection.signalingState);
         switch (this._peerConnection.signalingState) {
             case "stable":
                 // if we are stable, assume we are creating a local offer
@@ -10306,6 +10304,7 @@ class SessionDescriptionHandler {
             default:
                 return Promise.reject(new Error("Invalid signaling state " + this._peerConnection.signalingState));
         }
+        console.log("22222222");
         return Promise.resolve();
     }
     /**
