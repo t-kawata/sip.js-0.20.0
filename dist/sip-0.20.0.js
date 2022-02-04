@@ -10042,6 +10042,8 @@ class SessionDescriptionHandler {
         if (videoTracks.length) {
             updateTrack(videoTracks[0]);
         }
+        console.log("1111111111111111111111");
+        console.log(audioTracks);
         return trackUpdates.reduce((p, x) => p.then(() => x), Promise.resolve());
     }
     /**
@@ -10207,8 +10209,6 @@ class SessionDescriptionHandler {
         // stream is listed as inactive, it MUST be marked as inactive in the
         // answer.
         // https://tools.ietf.org/html/rfc3264#section-6.1
-        console.log("11111111");
-        console.log(this._peerConnection.signalingState);
         switch (this._peerConnection.signalingState) {
             case "stable":
                 // if we are stable, assume we are creating a local offer
@@ -10304,7 +10304,6 @@ class SessionDescriptionHandler {
             default:
                 return Promise.reject(new Error("Invalid signaling state " + this._peerConnection.signalingState));
         }
-        console.log("22222222");
         return Promise.resolve();
     }
     /**
