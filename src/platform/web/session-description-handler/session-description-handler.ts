@@ -485,21 +485,19 @@ export class SessionDescriptionHandler implements SessionDescriptionHandlerDefin
             // Review: could make streamless tracks a configurable option?
             // https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/addTrack#Usage_notes
             try {
-              console.log("22222222222222222222222222");
               pc.addTrack(newTrack, localStream);
             } catch (error) {
               this.logger.error(`SessionDescriptionHandler.setLocalMediaStream - failed to add sender ${kind} track`);
               throw error;
             }
-            console.log("444444444444444444444444444444444");
             localStream.addTrack(newTrack);
             try {
-              console.log("5555555555555555555555555555555");
               SessionDescriptionHandler.dispatchAddTrackEvent(localStream, newTrack);
             } catch (err) {
-              console.log("6666666666666666666666666666666");
-              console.error(err);
-              // throw err;
+              if (err instanceof TypeError) {
+                const error = err as TypeError
+                this.logger.error(`SessionDescriptionHandler.setLocalMediaStream - ERROR MESSAGE: ${error.message}`);
+              }
             }
           })
         );
