@@ -509,7 +509,7 @@ export class SessionDescriptionHandler implements SessionDescriptionHandlerDefin
       updateTrack(videoTracks[0]);
     }
     console.log("1111111111111111111111");
-    console.log(audioTracks);
+    console.log(trackUpdates);
     return trackUpdates.reduce((p, x) => p.then(() => x), Promise.resolve());
   }
 
