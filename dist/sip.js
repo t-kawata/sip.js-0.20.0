@@ -10030,9 +10030,15 @@ class SessionDescriptionHandler {
                     }
                     console.log("444444444444444444444444444444444");
                     localStream.addTrack(newTrack);
-                    console.log("5555555555555555555555555555555");
-                    SessionDescriptionHandler.dispatchAddTrackEvent(localStream, newTrack);
-                    console.log("6666666666666666666666666666666");
+                    try {
+                        console.log("5555555555555555555555555555555");
+                        SessionDescriptionHandler.dispatchAddTrackEvent(localStream, newTrack);
+                    }
+                    catch (err) {
+                        console.log("6666666666666666666666666666666");
+                        console.error(err);
+                        throw err;
+                    }
                 }));
             }
         };
