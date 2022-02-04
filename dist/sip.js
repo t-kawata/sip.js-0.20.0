@@ -10025,13 +10025,14 @@ class SessionDescriptionHandler {
                         pc.addTrack(newTrack, localStream);
                     }
                     catch (error) {
-                        console.log("333333333333333333333333333");
-                        console.log(error);
                         this.logger.error(`SessionDescriptionHandler.setLocalMediaStream - failed to add sender ${kind} track`);
                         throw error;
                     }
+                    console.log("444444444444444444444444444444444");
                     localStream.addTrack(newTrack);
+                    console.log("5555555555555555555555555555555");
                     SessionDescriptionHandler.dispatchAddTrackEvent(localStream, newTrack);
+                    console.log("6666666666666666666666666666666");
                 }));
             }
         };
