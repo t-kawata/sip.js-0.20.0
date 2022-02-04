@@ -493,9 +493,8 @@ export class SessionDescriptionHandler implements SessionDescriptionHandlerDefin
             localStream.addTrack(newTrack);
             try {
               SessionDescriptionHandler.dispatchAddTrackEvent(localStream, newTrack);
-            } catch (err) {
-              if (err instanceof TypeError) {
-                const error = err;
+            } catch (error) {
+              if (error instanceof TypeError) {
                 this.logger.error(`SessionDescriptionHandler.setLocalMediaStream - ERROR MESSAGE: ${error.message}`);
               }
             }
